@@ -1,8 +1,33 @@
 import { PlayCircle, Info } from "lucide-react";
 
 export const Hero = ({ media }) => {
+  let clrFaixa;
+  switch (media.faixa) {
+    case "L":
+      clrFaixa = "bg-green-600";
+      break;
+    case "10":
+      clrFaixa = "bg-blue-500";
+      break;
+    case "12":
+      clrFaixa = "bg-yellow-400";
+      break;
+    case "14":
+      clrFaixa = "bg-orange-400";
+      break;
+    case "16":
+      clrFaixa = "bg-red-600";
+      break;
+    case "18":
+      clrFaixa = "bg-black";
+      break;
+  }
+
   return (
-    <div className="w-full h-full bg-[url(/totoro.png)] bg-no-repeat bg-size-[100%] flex flex-col justify-end">
+    <div
+      className="w-full h-full bg-no-repeat bg-cover flex flex-col justify-end"
+      style={{ backgroundImage: `url(${media.image})` }}
+    >
       <div className="w-full flex items-end justify-between pl-14">
         <div className="flex flex-col max-w-lg">
           <div className="flex items-center gap-2.5 mb-3">
@@ -18,7 +43,7 @@ export const Hero = ({ media }) => {
 
           <img
             className="w-85 mb-4"
-            src="/logo_totoro.png"
+            src={media.logo}
             alt="Logo filme meu amigo totoro"
           />
 
@@ -33,13 +58,13 @@ export const Hero = ({ media }) => {
           <div className="flex items-center gap-4">
             <a
               href=""
-              className="bg-slate-50 flex text-slate-900 items-center gap-2 py-2.5 px-6 rounded-sm font-semibold"
+              className="bg-slate-50 flex text-slate-950 items-center gap-2 py-2.5 px-6 rounded-sm font-semibold"
             >
-              <PlayCircle size={28}/>
+              <PlayCircle size={28} />
               Assistir
             </a>
             <button className="bg-slate-50/20 cursor-pointer text-slate-50 flex items-center gap-2 py-2.5 px-6 rounded-sm font-semibold">
-              <Info size={28}/>
+              <Info size={28} />
               Mais Informações
             </button>
           </div>
@@ -47,13 +72,15 @@ export const Hero = ({ media }) => {
 
         <div className="w-24 bg-slate-950/30 flex items-stretch relative pl-3 py-[1px]">
           <div className="w-1 h-full left-0 top-0 bg-violet-600 absolute"></div>
-          <span className="bg-green-600 text-slate-50 w-7 h-7 rounded-sm flex items-center justify-center font-extrabold">
+          <span
+            className={`text-slate-50 w-7 h-7 rounded-sm flex items-center justify-center font-extrabold ${clrFaixa}`}
+          >
             {media.faixa}
           </span>
         </div>
       </div>
 
-      <div className="w-full h-60 bg-gradient-to-t from-slate-950 to-transparent"></div>
+      <div className="w-full h-70 bg-gradient-to-t from-slate-950 to-transparent"></div>
     </div>
   );
 };
