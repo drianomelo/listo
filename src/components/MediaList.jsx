@@ -8,7 +8,7 @@ import { MediaItem } from "./MediaItem";
 
 export const MediaList = ({ title, medias }) => {
   return (
-    <div className="w-full bg-transparent pl-14 relative -top-28">
+    <div className="w-full bg-transparent pl-14 relative -top-36">
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={6}
